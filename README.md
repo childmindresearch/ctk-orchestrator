@@ -6,7 +6,6 @@ calling all services in the toolkit to locally deploy the toolkit.
 At present, the software architecture looks as follows:
 
 ```mermaid
-%%{init: {'theme':'forest'}}%%
 graph TD
     Frontend/Svelte <--> API/FastAPI
 ```
