@@ -14,10 +14,18 @@ All services are pulled from other repositories within the CMI-DAIR organization
 
 ## Deployment
 
-To deploy, simply navigate to the root of the repository and run:
+Before deploying, copy `.env.example` to `.env` and fill in the required environment variables. Next run:
 
 ```bash
 docker compose up
 ```
 
 The frontend will then be accessible on port 3000, and the API at 8000.
+
+Please note, that the summarization currently only accepts .docx files. These
+docx files MUST have :
+
+- A paragraph that contains solely "Name: [FIRST NAME] [LAST NAME]
+- Headers that are (case-insensitive) equal to "clinical summary and impression", "mental health assessment", "dsm-5 diagnostic summary".
+
+All text underneath these headers is extracted.
