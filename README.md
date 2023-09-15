@@ -8,6 +8,7 @@ At present, the software architecture looks as follows:
 ```mermaid
 graph TD
     Frontend/Svelte <--> API/FastAPI
+    API/FastAPI <--> ElasticSearch
 ```
 
 All services are pulled from other repositories within the CMI-DAIR organization. See each individual repository for more information.
