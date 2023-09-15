@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   frontend:
     image: ghcr.io/cmi-dair/ctk-frontend:main
@@ -5,10 +7,35 @@ services:
       - 3000:3000
     environment:
       - VITE_API_URL=http://api:8000
+    networks:
+      - frontend_api
 
   api:
-    image: ghcr.io/cmi-dair/ctk-api:main
+    # image: ghcr.io/cmi-dair/ctk-api:main
+    build:
+      context: ../ctk-api
+      dockerfile: Dockerfile
     ports:
       - 8000:8000
-    env_file:
-      - .env
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ELASTIC_URL=http://elasticsearch:9200
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+    networks:
+      - frontend_api
+      - api_elastic
+
+  elasticsearch:
+    image: elasticsearch:8.9.2
+    ports:
+      - 9200:9200
+    environment:
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - discovery.type=single-node
+      - xpack.security.enabled=false # Only for dev testing!
+    networks:
+      - api_elastic
+
+networks:
+  api_elastic:
+  frontend_api:
