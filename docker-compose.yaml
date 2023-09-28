@@ -11,10 +11,7 @@ services:
       - frontend_api
 
   api:
-    # image: ghcr.io/cmi-dair/ctk-api:main
-    build:
-      context: ../ctk-api
-      dockerfile: Dockerfile
+    image: ghcr.io/cmi-dair/ctk-api:main
     ports:
       - 8000:8000
     environment:
