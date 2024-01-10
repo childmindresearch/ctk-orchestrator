@@ -23,7 +23,6 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     networks:
       - frontend_api
-      - api_elastic
       - api_postgresql
 
   postgresql:
@@ -41,6 +40,5 @@ services:
 
 
 networks:
-  api_elastic:
   frontend_api:
   api_postgresql:
