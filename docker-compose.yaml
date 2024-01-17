@@ -3,7 +3,7 @@ version: "3.8"
 services:
   frontend:
     platform: linux/amd64
-    image: ghcr.io/cmi-dair/ctk-frontend:main
+    image: ghcr.io/childmindresearch/ctk-frontend:main
     ports:
       - 3000:3000
     environment:
@@ -13,7 +13,7 @@ services:
 
   api:
     platform: linux/amd64
-    image: ghcr.io/cmi-dair/ctk-api:main
+    image: ghcr.io/childmindresearch/ctk-api:main
     ports:
       - 8000:8000
     environment:
